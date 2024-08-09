@@ -29,14 +29,15 @@ const guardians = {
 function generatePlaylist(guardians, songs) {
 const playlists = {};
 for (const guardian in guardians) {
-const genre = guardians[guardian];  
-const playlist = songs.filter(song => song.genre === genre);
+const genre = guardians[guardian].toLowerCase();  
+const playlist = songs.filter(song => song.genre.toLowerCase() === genre);
 playlists[guardian] = playlist;
 }
 return playlists;
+
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
-generatePlaylist(guardians, songs);
-
+const playlists = generatePlaylist(guardians, songs);
+console.log(playlists);
 
